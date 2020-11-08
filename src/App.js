@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from 'react';
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from 'react-router-dom';
+import HomeComponent from './Components/HomeComponent/HomeComponent';
+import ImageUpload from './Components/Upload/ImageUpload';
+import UserDetail from './Components/User/UserDetail';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <Router>
+        <Switch>
+          <Route path="/" exact>
+            <HomeComponent />
+          </Route>
+          <Route path="/users" exact>
+            <UserDetail />
+          </Route>
+         <Route path="/upload">
+          <ImageUpload />
+          </Route>
+        </Switch>
+      </Router>
+    </Fragment>
   );
-}
+};
 
 export default App;
